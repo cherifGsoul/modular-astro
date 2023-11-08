@@ -1,18 +1,37 @@
 ---
-const { errors } = Astro.props
+const { errors, skill } = Astro.props;
 ---
 
-	<form method="post">
-		<div class="field">
-			<label for="name" class="label">Name</label>
-			<div class="control">
-				<input type="text" class="input" name="name" id="name">
-				 {errors.fieldErrors?.name.map( error => {
-					console.log(error)
-					return <p class="help is-danger">{error}</p>
-				 })}
-			</div>
-		</div>
-		<button class="button is-primary" type="submit">Add</button>
-	</form>
+<form method="post" id="updateForm">
+  <div class="field">
+    <label for="name" class="label">Name</label>
+    <div class="control">
+      <input
+        type="text"
+        class="input"
+        name="name"
+        id="name"
+        value={(skill && skill.name) || ""}
+      />
+      {
+        errors.fieldErrors?.name.map((error) => {
+          return <p class="help is-danger">{error}</p>;
+        })
+      }
+    </div>
+  </div>
+</form>
 
+
+
+<div class="is-flex is-flex-direction-row is-justify-content-space-around	">
+	<button form="updateForm" class="button is-primary" type="submit"
+    >{(skill && "Update") || "Add"}</button
+	>
+	{ skill && <form action="/skills/delete" method="post" id="deleteForm">
+	  <input type="hidden" value={skill.id} name="id" />
+	</form>
+  <button class="button is-danger " type="submit" form="deleteForm"
+    >Delete</button
+  >}
+</div>

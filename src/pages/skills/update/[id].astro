@@ -1,0 +1,33 @@
+---
+import Main from '../../../layouts/Main.astro';
+import { updateSkill, requestSchema, skillForId } from "../../../modules/skillcatalog"
+import Form from "../Form.astro";
+
+const { id } = Astro.params
+let  errors = {};
+let skill
+if (!id) return Astro.redirect("/404")
+if (id) {
+	skill = await skillForId(id)
+	if (!skill) {
+		return Astro.redirect('/404')
+	}
+	if (Astro.request.method === "POST") {
+		const formData = await Astro.request.formData();
+		const name = formData.get('name');
+		const valid = requestSchema.safeParse({name})
+		if (valid.success) {
+			await updateSkill({id: skill.id, name: valid.data.name})
+			return Astro.redirect("/skills");
+		}
+		if (!valid.success) {
+			errors = valid.error.flatten()
+		}
+	}
+}
+---
+
+<Main>
+	<h1>Update skill</h1>
+	<Form errors={errors} skill={skill} />
+</Main>

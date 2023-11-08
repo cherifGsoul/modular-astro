@@ -18,13 +18,13 @@ const records = await db.select().from(skills).all()
             </tr>
         </thead>
         <tbody>
-            {records.map((record) => {
-                return <tr>
-                    <td>{record.name}</td>
-                    <td>edit</td>
+            {records.length > 0 && records.map((record) => (
+                <tr>
+                    <td><a href={`/skills/update/${record.id}`}>{record.name}`</a></td>
+                    <td><a href={`/skills/update/${record.id}`}>edit</a></td>
                 </tr>
-
-            })}
+            ))}
+            {records.length === 0 && <tr><td colspan="2">No Skills yet</td></tr>}
         </tbody>
     </table>
 </div>

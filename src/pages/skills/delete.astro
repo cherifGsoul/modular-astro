@@ -1,0 +1,16 @@
+---
+import { deleteSkill } from "../../modules/skillcatalog"
+
+if (Astro.request.method === 'POST') {
+    const formData = await Astro.request.formData()
+    const id = formData.get('id')
+    console.log(id)
+    if (id) {
+        await deleteSkill(id)
+        return Astro.redirect('/skills')
+    }
+}
+
+return Astro.redirect('/404')
+
+---
