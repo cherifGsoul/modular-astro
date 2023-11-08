@@ -1,0 +1,15 @@
+---
+const isActive = (path: string) => {
+  const pathname = new URL(Astro.request.url).pathname;
+  const currentPath = pathname.slice(1); // remove the first "/"
+  return currentPath === path ? "is-active" : "";
+};
+---
+<nav class="menu">
+    <ul class="menu-list">
+        <li><a href="/">Dashboard</a></li>
+        <li><a href="/members">Members</a></li>
+        <li><a href="/skills">Skills</a></li>
+        <li><a href="/projects">Projects</a></li>
+    </ul>
+</nav>

@@ -1,0 +1,31 @@
+---
+import db from '../../config/db';
+import Main from '../../layouts/Main.astro'
+import { skills } from '../../modules/skillcatalog';
+
+const records = await db.select().from(skills).all()
+---
+
+<Main>
+	<h1>Skills</h1>
+    <a href="/skills/create" class="button is-primary">Add Skill</a>
+    <div class="table-container">
+    <table class="table is-stripped is-bordered is-fullwidth">
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {records.map((record) => {
+                return <tr>
+                    <td>{record.name}</td>
+                    <td>edit</td>
+                </tr>
+
+            })}
+        </tbody>
+    </table>
+</div>
+</Main>

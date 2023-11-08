@@ -1,0 +1,25 @@
+---
+import Main from '../../layouts/Main.astro';
+import { v4 } from 'uuid';
+import { createSkill, requestSchema } from "../../modules/skillcatalog"
+import Form from "./Form.astro"
+
+let  errors = {};
+if (Astro.request.method === "POST") {
+	const formData = await Astro.request.formData()
+	const name = formData.get('name');
+	const valid = requestSchema.safeParse({name})
+	if (valid.success) {
+		await createSkill({id: v4(), name: valid.data.name})
+		return Astro.redirect("/skills");
+	}
+	if (!valid.success) {
+		errors = valid.error.flatten()
+	}
+}
+---
+
+<Main>
+	<h1>Add skill</h1>
+	<Form errors="{errors}" />
+</Main>

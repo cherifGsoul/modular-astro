@@ -1,0 +1,31 @@
+{
+  "name": "modular",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.3.1",
+    "@astrojs/node": "^6.0.3",
+    "@types/uuid": "^9.0.6",
+    "alpinejs": "^3.13.2",
+    "astro": "^3.4.3",
+    "better-sqlite3": "^9.0.0",
+    "bulma": "^0.9.4",
+    "drizzle-orm": "^0.28.6",
+    "drizzle-zod": "^0.5.1",
+    "htmx.org": "^1.9.8",
+    "typescript": "^5.2.2",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.7",
+    "drizzle-kit": "^0.19.13",
+    "sass": "^1.69.5"
+  }
+}

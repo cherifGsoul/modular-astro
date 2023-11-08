@@ -1,0 +1,20 @@
+{
+  "version": "5",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1699378483504,
+      "tag": "0000_nifty_tana_nile",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1699378968351,
+      "tag": "0001_striped_fantastic_four",
+      "breakpoints": true
+    }
+  ]
+}
