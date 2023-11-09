@@ -7,7 +7,7 @@ const records = await db.select().from(skills).all()
 ---
 
 <Main>
-	<h1>Skills</h1>
+	<h1 class="title is-1">Skills</h1>
     <a href="/skills/create" class="button is-primary">Add Skill</a>
     <div class="table-container">
     <table class="table is-stripped is-bordered is-fullwidth">
@@ -20,8 +20,14 @@ const records = await db.select().from(skills).all()
         <tbody>
             {records.length > 0 && records.map((record) => (
                 <tr>
-                    <td><a href={`/skills/update/${record.id}`}>{record.name}`</a></td>
-                    <td><a href={`/skills/update/${record.id}`}>edit</a></td>
+                    <td><a href={`/skills/update/${record.id}`}>{record.name}</a></td>
+                    <td>
+                        <a href={`/skills/update/${record.id}`} class="button is-info is-small">edit</a>
+                        <form hx-post="/skills/delete" hx-target="body">
+                            <input type="hidden" value={record.id} name="id">
+                            <button type="submit" class="button is-danger is-small">delete</a>
+                        </form>
+                    </td>
                 </tr>
             ))}
             {records.length === 0 && <tr><td colspan="2">No Skills yet</td></tr>}
