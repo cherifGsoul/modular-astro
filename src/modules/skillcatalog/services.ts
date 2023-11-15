@@ -3,14 +3,14 @@ import db from '../../config/db';
 import { skills, type NewSkill, type GetSkill } from './model'
 
 export const createSkill =async (skill: NewSkill): Promise<void> => {
-    await db
+    db
             .insert(skills)
             .values(skill)
             .run();
 }
 
 export const skillForId = async (id: string): Promise<GetSkill | undefined> => {
-    const stmt = await db
+    const stmt = db
                         .select()
                         .from(skills)
                         .where(eq(skills.id, sql.placeholder('id')))

@@ -10,7 +10,7 @@ if (!id) return Astro.redirect("/404")
 if (id) {
 	skill = await skillForId(id)
 	if (!skill) {
-		return Astro.redirect('/404')
+		return Astro.redirect(null, 404)
 	}
 	if (Astro.request.method === "POST") {
 		const formData = await Astro.request.formData();

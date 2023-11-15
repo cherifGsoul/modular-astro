@@ -3,14 +3,14 @@ import { deleteSkill } from "../../modules/skillcatalog"
 
 if (Astro.request.method === 'POST') {
     const formData = await Astro.request.formData()
-    const id = formData.get('id')
-    console.log(id)
+    const id: string | undefined = formData.get('id')?.toString()
+
     if (id) {
         await deleteSkill(id)
         return Astro.redirect('/skills')
     }
 }
 
-return Astro.redirect('/404')
+return new Response(null, 404)
 
 ---

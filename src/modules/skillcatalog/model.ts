@@ -1,11 +1,12 @@
 import { sqliteTable, text } from "drizzle-orm/sqlite-core";
-import { createInsertSchema, createSelectSchema } from 'drizzle-zod';
-import { z } from 'zod';
+import { createInsertSchema } from 'drizzle-zod';
+// import { z } from 'zod';
 
 export const skills = sqliteTable("skills", {
     id: text("id").primaryKey(),
     name: text("name").unique().notNull()
 });
+
 
 export const insertSkillSchema = createInsertSchema(skills, {
     id: (schema) => schema.id.uuid(),

@@ -3,7 +3,7 @@ import db from '../../config/db';
 import Main from '../../layouts/Main.astro'
 import { skills } from '../../modules/skillcatalog';
 
-const records = await db.select().from(skills).all()
+const records = db.select().from(skills).all()
 ---
 
 <Main>

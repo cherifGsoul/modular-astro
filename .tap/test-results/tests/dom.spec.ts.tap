@@ -1,0 +1,23 @@
+TAP version 14
+# Subtest: dom
+
+                <my-custom-element>
+                    <span>Slotted content</span>
+                <template shadowrootmode="open">
+                            <style>
+                                :host {
+                                    display: inline-block;
+                                    background: red;
+                                }
+                            </style>
+                            <div><slot></slot></div>
+                        </template></my-custom-element>
+            
+    # Subtest: works
+        1..0
+    ok 1 - works # time=11.474ms
+    
+    1..1
+ok 1 - dom # time=38.059ms
+
+1..1

@@ -7,9 +7,9 @@ const isActive = (path: string) => {
 ---
 <nav class="menu">
     <ul class="menu-list">
-        <li><a href="/">Dashboard</a></li>
-        <li><a href="/team">Members</a></li>
-        <li><a href="/skills">Skills</a></li>
-        <li><a href="/projects">Projects</a></li>
+        <li><a href="/" class={isActive("")}>Dashboard</a></li>
+        <li><a href="/team" class={isActive("team")}>Members</a></li>
+        <li><a href="/skills" class={isActive("skills")}>Skills</a></li>
+        <li><a href="/projects" class={isActive("projects")}>Projects</a></li>
     </ul>
 </nav>
