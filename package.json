@@ -18,6 +18,8 @@
     "astro": "^3.4.3",
     "better-sqlite3": "^9.0.0",
     "bulma": "^0.9.4",
+    "choices.js": "^10.2.0",
+    "dayjs": "^1.11.10",
     "drizzle-orm": "^0.28.6",
     "drizzle-zod": "^0.5.1",
     "happy-dom": "^12.10.3",

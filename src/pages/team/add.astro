@@ -1,5 +1,7 @@
 ---
 import Main from '../../layouts/Main.astro'
+// import "choices.js/src/styles/base.scss"
+import "choices.js/src/styles/choices.scss"
 ---
 
 <Main>
@@ -26,8 +28,19 @@ import Main from '../../layouts/Main.astro'
         <div class="field">
             <label for="name" class="label">Skills</label>
             <div class="control">
-                <input type="text" class="input" name="skills">
+                <input type="text" class="input" name="skills" id="skills-choices">
             </div>
         </div>
     </form>
 </Main>
+
+<script>
+    import Choices from "choices.js"
+    const skillsEl = document.getElementById("skills-choices")
+    if (skillsEl) {
+        const skillsChoices = new Choices(skillsEl, {
+        }).setChoices([{value: "foo", label: "FOO", disabled: false}])
+
+    }
+        
+</script>
